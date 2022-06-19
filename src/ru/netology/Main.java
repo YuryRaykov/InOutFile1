@@ -9,75 +9,58 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String[] text = new String[9];
+        text[0] = "Каталог src создан";
+        text[1] = "Каталог res создан";
+        text[2] = "Каталог savegames создан";
+        text[3] = "Каталог temp создан";
+        text[4] = "Каталог main создан";
+        text[5] = "Каталог test создан";
+        text[6] = "Создан файл Main.java";
+        text[7] = "Создан файл Util.java";
+        text[8] = "Каталог drawables создан";
+
+        String[] textn = new String[3];
+        textn[0] = "Каталог vectors создан";
+        textn[1] = "Каталог icons создан";
+        textn[2] = "Файл temp.txt создан";
+
+        String[] textDir = new String[12];
+        textDir[0] = "D://Games/src";
+        textDir[1] = "D://Games/res";
+        textDir[2] = "D://Games/savegames";
+        textDir[3] = "D://Games/temp";
+        textDir[4] = "D://Games/temp/main";
+        textDir[5] = "D://Games/src/test";
+        textDir[6] = "D://Games/res/icons";
+        textDir[7] = "Каталог vectors создан";
+        textDir[8] = "Каталог icons создан";
+        textDir[9] = "D://Games/res/drawables";
+        textDir[10] = "D://Games/res/vectors";
+        textDir[11] = "Файл temp.txt создан";
+
+        String[] textFile = new String[3];
+        textFile[0] = "D://Games/temp/main//Main.java";
+        textFile[1] = "D://Games/temp/main//Utils.java";
+        textFile[2] = "D://Games/temp//temp.txt";
+
         StringBuilder temp1 = new StringBuilder("Создали папку Games" + '\n');
 
-        File dir1 = new File("D://Games/src");
-        if (dir1.mkdir()) {
-            temp1.append("Каталог src создан" + '\n');
+        for (int i = 0; i < 9; i++) {
+            File dir = new File(textDir[i]);
+            if (dir.mkdir()) {
+                temp1.append(text[i] + '\n');
+            }
         }
 
-        File dir2 = new File("D://Games/res");
-        if (dir2.mkdir()) {
-            temp1.append("Каталог res создан" + '\n');
-        }
-
-        File dir3 = new File("D://Games/savegames");
-        if (dir3.mkdir()) {
-            temp1.append("Каталог savegames создан" + '\n');
-        }
-
-        File dir4 = new File("D://Games/temp");//
-        if (dir4.mkdir()) {
-            temp1.append("Каталог temp создан" + '\n');
-        }
-
-        File dir5 = new File("D://Games/temp/main");//
-        if (dir5.mkdir()) {
-            temp1.append("Каталог main создан" + '\n');
-        }
-
-        File dir6 = new File("D://Games/src/test");
-        if (dir6.mkdir()) {
-            temp1.append("Каталог test создан" + '\n');
-        }
-
-        File mainFile1 = new File("D://Games/temp/main//Main.java");//
-        try {
-            if (mainFile1.createNewFile())
-                temp1.append("Создан файл Main.java" + '\n');
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        File mainFile2 = new File("D://Games/temp/main//Utils.java");//
-        try {
-            if (mainFile2.createNewFile())
-                temp1.append("Создан файл Util.java" + '\n');
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        File dir7 = new File("D://Games/res/drawables");
-        if (dir7.mkdir()) {
-            temp1.append("Создан файл Util.java" + '\n');
-        }
-
-        File dir8 = new File("D://Games/res/vectors");
-        if (dir8.mkdir()) {
-            temp1.append("Каталог vectors создан" + '\n');
-        }
-
-        File dir9 = new File("D://Games/res/icons");
-        if (dir9.mkdir()) {
-            temp1.append("Каталог icons создан" + '\n');
-        }
-
-        File mainFile3 = new File("D://Games/temp//temp.txt");//
-        try {
-            if (mainFile3.createNewFile())
-                temp1.append("Файл temp.txt создан" + '\n');
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        for (int i = 0; i < 3; i++) {
+            File mainFile = new File(textFile[i]);
+            try {
+                if (mainFile.createNewFile())
+                    temp1.append(text[i] + '\n');
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
 
         String result = temp1.toString();
@@ -89,15 +72,15 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-//        try (FileReader reader = new FileReader("temp.txt")) {
-//            int c;
-//            while ((c = reader.read()) != -1) {
-//                System.out.print((char) c);
-//            }
-//        } catch (IOException ex) {
-//            System.out.println(ex.getMessage(
-//            ));
-//        }
+        try (FileReader reader = new FileReader("temp.txt")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage(
+            ));
+        }
 
     }
 }
